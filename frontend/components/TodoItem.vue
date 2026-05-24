@@ -132,6 +132,10 @@
         </button>
       </div>
     </div>
+
+    <!-- Comments and Attachments -->
+    <CommentSection :todo-id="todo.id" :current-user-id="todo.user_id" />
+    <AttachmentSection :todo-id="todo.id" :current-user-id="todo.user_id" />
   </div>
 </template>
 

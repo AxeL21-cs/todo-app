@@ -46,3 +46,31 @@ export type TodoCreate = Pick<Todo, 'title'> &
 export type TodoUpdate = Partial<
   Pick<Todo, 'title' | 'description' | 'priority' | 'due_date' | 'status' | 'reminder_at'>
 >
+
+// --- Comment Types ---
+
+export interface Comment {
+  id: string
+  todo_id: string
+  user_id: string
+  username: string
+  content: string
+  created_at: string
+}
+
+export interface CommentCreate {
+  content: string
+}
+
+// --- Attachment Types ---
+
+export interface Attachment {
+  id: string
+  todo_id: string
+  user_id: string
+  filename: string
+  content_type: string
+  size: number
+  url: string
+  created_at: string
+}

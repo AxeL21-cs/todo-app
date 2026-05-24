@@ -13,7 +13,9 @@ from exceptions import (
     unauthorized_error_handler,
     validation_error_handler,
 )
+from routers.attachments import router as attachments_router
 from routers.auth import router as auth_router
+from routers.comments import router as comments_router
 from routers.notifications import router as notifications_router
 from routers.todos import router as todos_router
 
@@ -38,6 +40,8 @@ app.add_exception_handler(NotFoundError, not_found_error_handler)
 app.include_router(auth_router)
 app.include_router(todos_router)
 app.include_router(notifications_router)
+app.include_router(comments_router)
+app.include_router(attachments_router)
 
 
 @app.get("/")

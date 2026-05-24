@@ -108,6 +108,68 @@ class TodoStats(BaseModel):
 # --- Notification Models ---
 
 
+# --- Comment Models ---
+
+
+class Comment(BaseModel):
+    """Internal comment model with all fields."""
+
+    id: str  # UUID4 string
+    todo_id: str  # Reference to Todo.id
+    user_id: str  # Reference to User.id
+    content: str  # 1-1000 chars
+    created_at: datetime
+
+
+class CommentCreate(BaseModel):
+    """Request model for creating a comment."""
+
+    content: str = Field(min_length=1, max_length=1000)
+
+
+class CommentResponse(BaseModel):
+    """Response model for a comment."""
+
+    id: str
+    todo_id: str
+    user_id: str
+    username: str
+    content: str
+    created_at: datetime
+
+
+# --- Attachment Models ---
+
+
+class Attachment(BaseModel):
+    """Internal attachment model with all fields."""
+
+    id: str  # UUID4 string
+    todo_id: str  # Reference to Todo.id
+    user_id: str  # Reference to User.id
+    filename: str  # Original filename
+    stored_filename: str  # UUID-based stored filename
+    content_type: str  # MIME type (image/png, image/jpeg, etc.)
+    size: int  # File size in bytes
+    created_at: datetime
+
+
+class AttachmentResponse(BaseModel):
+    """Response model for an attachment."""
+
+    id: str
+    todo_id: str
+    user_id: str
+    filename: str
+    content_type: str
+    size: int
+    url: str  # URL to download the attachment
+    created_at: datetime
+
+
+# --- Notification Models ---
+
+
 class NotificationType(str, Enum):
     """Types of notifications."""
 
