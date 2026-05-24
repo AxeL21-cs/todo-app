@@ -1,52 +1,39 @@
-# Code Summary — Unit 4: Reminder Form Integration
+# Unit 4: Reminder Form Integration — Code Summary
 
-## Files Modified
+## Status: COMPLETE (Already Implemented)
 
-### frontend/types/index.ts
-- Added `reminder_at: string | null` to `Todo` interface
-- Added `reminder_at` to `TodoCreate` type (optional)
-- Added `reminder_at` to `TodoUpdate` type (optional, nullable)
+Unit 4 was found to be fully implemented when development was initiated. All files matched the design contracts exactly.
 
-### frontend/components/TodoForm.vue
-- Added `reminder_at` to form reactive state
-- Added datetime-local input field with label "Reminder"
-- Pre-populates reminder_at when editing (converts ISO to local datetime format)
-- Includes reminder_at in submit data (converts local datetime to ISO 8601 UTC)
-- Supports clearing reminder_at (sends null when field is empty but was previously set)
-- Added helper functions: `toLocalDatetimeString()` and `toISOString()`
+## Files Verified
 
-### frontend/components/TodoItem.vue
-- Added formatted reminder time display (bell icon + localized datetime)
-- Added ReminderBadge component showing "Upcoming" or "Due" state
-- Added `formattedReminderAt` computed property
+### Created (pre-existing)
+1. **`frontend/components/ReminderBadge.vue`** — Conditional badge component:
+   - Shows "Upcoming" (blue) when `reminder_at` is in the future and status ≠ done
+   - Shows "Due" (orange) when `reminder_at` is in the past and status ≠ done
+   - Hidden when no reminder set or todo is completed
 
-### frontend/pages/dashboard.vue
-- Added `reminder_at` to createForm reactive
-- Added datetime-local input in the inline create modal
-- Converts local datetime to ISO 8601 on submit
-- Resets reminder_at in resetCreateForm
-- Added ReminderBadge to todo list items
+### Modified (pre-existing)
+2. **`frontend/components/TodoForm.vue`** — Full reminder integration:
+   - `datetime-local` input for setting/editing reminder
+   - `toLocalDatetimeString()` converts ISO UTC → local for display
+   - `toISOString()` converts local → ISO UTC for submission
+   - Handles create mode (sends reminder_at if set)
+   - Handles edit mode (only sends if changed, can clear by setting null)
 
-## Files Created
+3. **`frontend/components/TodoItem.vue`** — Reminder display:
+   - Shows formatted reminder time with bell icon
+   - Includes `<ReminderBadge>` component for visual status
 
-### frontend/components/ReminderBadge.vue
-- Accepts `reminderAt` (string | null) and `status` (string) props
-- Shows "Upcoming" badge (blue) when reminder_at is in the future
-- Shows "Due" badge (orange) when reminder_at is in the past
-- Hidden when reminder_at is null or status is "done"
-- Includes `data-testid` attributes for automation testing
+4. **`frontend/types/index.ts`** — Type definitions:
+   - `Todo.reminder_at: string | null`
+   - `TodoCreate` includes optional `reminder_at`
+   - `TodoUpdate` includes optional `reminder_at`
 
-## Contract Compliance
+5. **`frontend/pages/dashboard.vue`** — Create form:
+   - Includes `reminder_at` datetime-local input
+   - Converts to ISO on submit
 
-| Contract | Status |
-|---|---|
-| Contract 6: Frontend sends/receives `reminder_at` via todo endpoints | ✅ Compliant |
-| Contract 6: Todo TypeScript interface includes `reminder_at: string \| null` | ✅ Compliant |
-| TodoCreate and TodoUpdate include `reminder_at` | ✅ Compliant |
-
-## Stories Implemented
-
-| Story | Status |
-|---|---|
-| US-1 (frontend): Datetime-local input in TodoForm for reminder_at | ✅ |
-| US-2: Display reminder time on TodoItem + ReminderBadge | ✅ |
+## Integration Notes
+- Unit 4 depends on Unit 2's API contract (Todo model includes `reminder_at` in responses)
+- The backend already persists and returns `reminder_at` via existing todo endpoints
+- No additional backend changes required

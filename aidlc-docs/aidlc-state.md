@@ -40,11 +40,27 @@
 - [x] Code Generation - COMPLETE
 - [x] Build and Test - COMPLETE
 
+### 🟢 CONSTRUCTION PHASE (Unit 3: Notification Bell UI)
+- [x] Functional Design - SKIPPED (UI fully specified in contracts)
+- [x] NFR Requirements - SKIPPED (no new NFRs for this unit)
+- [x] NFR Design - SKIPPED (no NFR patterns needed)
+- [x] Infrastructure Design - SKIPPED (no infrastructure changes)
+- [x] Code Generation - COMPLETE
+- [x] Build and Test - COMPLETE
+
+### 🟢 CONSTRUCTION PHASE (Unit 4: Reminder Form Integration)
+- [x] Functional Design - SKIPPED (UI fully specified in contracts)
+- [x] NFR Requirements - SKIPPED (no new NFRs for this unit)
+- [x] NFR Design - SKIPPED (no NFR patterns needed)
+- [x] Infrastructure Design - SKIPPED (no infrastructure changes)
+- [x] Code Generation - COMPLETE (already implemented)
+- [x] Build and Test - COMPLETE
+
 ### 🟡 OPERATIONS PHASE
 - [ ] Operations - PLACEHOLDER
 
 ## Current Status
-- **Lifecycle Phase**: CONSTRUCTION (COMPLETE for Unit 2)
-- **Current Stage**: Build and Test (Complete)
-- **Next Stage**: Operations (PLACEHOLDER) — Unit 2 is done
-- **Status**: Unit 2 fully complete. Code generated, build/test instructions provided.
+- **Lifecycle Phase**: CONSTRUCTION (COMPLETE for Units 2, 3, 4)
+- **Current Stage**: All units complete
+- **Next Stage**: Operations (PLACEHOLDER)
+- **Status**: All 4 units fully complete. Notification backend (Unit 1) and Reminder Trigger Logic (Unit 2) were done previously. Notification Bell UI (Unit 3) and Reminder Form Integration (Unit 4) now complete.
