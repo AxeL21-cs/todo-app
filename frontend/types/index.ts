@@ -25,6 +25,21 @@ export interface TodoStats {
   overdue: number
 }
 
+export interface Notification {
+  id: string
+  user_id: string
+  todo_id: string
+  type: 'reminder' | 'overdue'
+  message: string
+  is_read: boolean
+  created_at: string
+}
+
+export interface NotificationsListResponse {
+  notifications: Notification[]
+  unread_count: number
+}
+
 export type TodoCreate = Pick<Todo, 'title'> &
   Partial<Pick<Todo, 'description' | 'priority' | 'due_date' | 'status' | 'reminder_at'>>
 
